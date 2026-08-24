@@ -520,6 +520,21 @@ export function DetailPane({
     ? `${commitQuery.data.committer} <${commitQuery.data.committerEmail}>`
     : commitQuery.data?.committer;
 
+  if (openFile) {
+    return (
+      <View style={styles.container}>
+        <DiffView
+          theme={theme}
+          root={root}
+          repoPath={repoPath}
+          hash={commit.hash}
+          path={openFile}
+          onBack={() => setOpenFile(null)}
+        />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.left}>
